@@ -1,13 +1,14 @@
-import { Card, CardActionArea, CardContent, CardMedia, GridListTile, GridListTileBar, Typography } from "@material-ui/core";
+import { GridListTile, GridListTileBar } from "@material-ui/core";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import './BreedCard.css';
+import { Redirect } from 'react-router-dom';
 
 function BreedCard(props) {
 
-    const { breed } = props;
+    const { breed, toggleImg } = props;
     const [img, setImg] = useState("https://www.purina.ca/sites/g/files/auxxlc601/files/dogBreedPlaceholder.png");
-
+    const [redirectTo, setRedirectTo] = useState("");
 
     useEffect(() => {
         axios.get("https://dog.ceo/api/breed/" + breed +
@@ -16,28 +17,18 @@ function BreedCard(props) {
             setImg(newImg);
         });
 
-    }, [breed]);
+    },[breed, toggleImg]);
 
-    return (
-        // <Card className="c-breed-card">
-        //     <CardActionArea>
-        //         <CardMedia
-        //         className="card-media"
-        //         image={img}
-        //         title={breed}
-        //         />
-        //         <CardContent>
-        //             <Typography gutterBottom variant="h5" component="h2">
-        //                 {breed}
-        //             </Typography>
-        //         </CardContent>
-        //     </CardActionArea>
-        // </Card>
-        <GridListTile className ="c-breed-card">
-            <img src = { img } alt = { breed }/> 
-            <GridListTileBar title = { breed }/> 
-        </GridListTile>
-    );
+    if (redirectTo) {
+        return <Redirect to={redirectTo}/>
+    } else {
+        return (
+            <GridListTile className ="c-breed-card">
+                <img src = { img } alt = { breed }  onClick={() => setRedirectTo("/breeds/" + breed)} /> 
+                <GridListTileBar title = { breed }/>  
+            </GridListTile>
+        );
+    }
 }
 
 export default BreedCard;

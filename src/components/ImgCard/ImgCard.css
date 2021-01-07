@@ -1,0 +1,9 @@
+.c-img-card {
+    width: 345px;
+    height: 345px;
+    padding: 20px;
+}
+
+.c-img-card img {
+    object-fit: cover;
+}

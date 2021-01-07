@@ -1,4 +1,4 @@
-.p-breeds {
+.p-breed {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -7,7 +7,7 @@
     flex-direction: column;
 }
 
-.p-breeds .grid-list {
+.p-breed .grid-list {
     display: flex;
     padding: 0;
     flex-wrap: wrap;
@@ -16,12 +16,9 @@
     justify-content: center;
 }
 
-.p-breeds .form-container {
-    position: relative;
-}
-
-.p-breeds .upd-imgs {
-    position: absolute;
-    right: 55px;
-    top: 35px;
+.p-breed .breed-header {
+    font-family: 'Gloria Hallelujah', cursive;
+    color: black;
+    font-size: 5em;
+    padding: 20px;
 }

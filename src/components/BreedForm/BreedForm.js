@@ -17,6 +17,7 @@ function BreedForm(props) {
             <form noValidate autoComplete="off">
                 <TextField id="standard-basic" label="filter by name" onChange={(e) => setSearchFilter(e.target.value)}/>
                 <Button variant="contained" onClick={onSearchBreed}>Search</Button>
+                
             </form>
         </div>
     );

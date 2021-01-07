@@ -7,17 +7,21 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import BreedModel from './model/BreedModel';
 import BreedsPage from './pages/BreedsPage/BreedsPage';
+import BreedPage from './pages/BreedPage/BreedPage';
 
 function App() {
   const [breedsData, setBreedsData] = useState(null);
 
   useEffect(() => {
+    updateBreeds();
+  },[]);
+
+  const updateBreeds = () => {
     axios.get("https://dog.ceo/api/breeds/list/all").then(res => {
           var i = 0;
           setBreedsData(Object.keys(res.data.message).map(name => new BreedModel(i++,name)));
         });
-    },[]);
-
+  }
   return (
     <div className="App">
       {
@@ -32,10 +36,11 @@ function App() {
       <HashRouter>
         <Switch>
           <Route exact path="/"><HomePage/></Route>
-          <Route exact path="/breeds"><BreedsPage breeds={breedsData}/></Route>
-          {/* <Route exact path="/breeders/:breed"><MoviesPage breeders={breedersData}/></Route> */}
+          <Route exact path="/breeds"><BreedsPage breeds={breedsData} /></Route>
+          <Route exact path="/breeds/:breed"><BreedPage breeds={breedsData}/></Route>
         </Switch>
       </HashRouter>
+
     </div>
   );
 }
