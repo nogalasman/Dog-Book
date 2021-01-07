@@ -1,0 +1,14 @@
+.c-breed-card {
+    width: 345px;
+    height: 345px;
+    padding: 20px;
+}
+
+.c-breed-card img {
+    object-fit: cover;
+}
+
+.c-breed-card .card-media {
+    height: 140px;
+    width: 140px;
+}

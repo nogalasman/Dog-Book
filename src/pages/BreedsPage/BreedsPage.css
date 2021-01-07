@@ -1,0 +1,17 @@
+.p-breeds {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: hidden;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.p-breeds .grid-list {
+    display: flex;
+    padding: 0;
+    flex-wrap: wrap;
+    list-style: none;
+    overflow-y: auto;
+    justify-content: center;
+}
